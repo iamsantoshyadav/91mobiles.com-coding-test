@@ -19,6 +19,10 @@ class DatabaseConnector {
                 $user,
                 $pass
             );
+
+            
+            $this->dbConnection->setAttribute(\PDO::ATTR_EMULATE_PREPARES, false);
+            $this->dbConnection->setAttribute(\PDO::ATTR_STRINGIFY_FETCHES, false);
         } catch (\PDOException $e) {
             exit($e->getMessage());
         }
