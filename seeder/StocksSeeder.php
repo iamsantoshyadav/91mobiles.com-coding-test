@@ -6,7 +6,7 @@ $statement = <<<EOS
         id INT NOT NULL AUTO_INCREMENT,
         name VARCHAR(200) NOT NULL,
         date DATE NOT NULL,
-        price DECIMAL(10,2) NOT NULL,
+        price INT NOT NULL,
         PRIMARY KEY (id)
     ) ENGINE=INNODB;
 
