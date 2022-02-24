@@ -19,8 +19,8 @@ class StockController {
     public function processRequest()
     {
         switch ($this->requestMethod) {
-            case 'GET':
-                $response = $this->getAllStocks();
+            case 'POST':
+                $response = $this->maxProfitOfStock();
                 break;
             default:
                 $response = $this->notFoundResponse();
@@ -32,12 +32,19 @@ class StockController {
         }
     }
 
-    private function getAllStocks() {
-        $result = $this->stock->listAll();
-        $response['status_code_header'] = 'HTTP/1.1 200 OK';
-        $response['body'] = json_encode($result);
-        return $response;
+    private function maxProfitOfStock() {
+        try {
+            $input = (array) json_decode(file_get_contents('php://input'), TRUE);
+            $result = $this->stock->maxProfitOfStock($input);
+            $response['status_code_header'] = 'HTTP/1.1 200 OK';
+            $response['body'] = json_encode($result);
+            return $response;
+        }catch (\Exception $e){
+            exit($e->getMessage());
+        }
+
     }
+
 
     private function notFoundResponse()
     {
