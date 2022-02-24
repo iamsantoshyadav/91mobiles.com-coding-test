@@ -3,6 +3,7 @@ namespace Src\Model\Stocks;
 
 class Stock {
     private $db = null;
+    const NO_OF_BUYING_SELLING_STOCKS = 200;
 
     public function __construct($db){
         $this->db = $db;
@@ -41,8 +42,12 @@ class Stock {
 
             }else if ($stock['price'] - $minPrice > $maxProfit) {
                 $maxProfit = $stock['price'] - $minPrice;
-                $buyingStock = $stocks[$minPriceStockIndex];
-                $sellingStock = $stock;
+                //Do not consider buying and selling in same
+                if($stock['date'] > $stocks[$minPriceStockIndex]['date']){
+                    $buyingStock = $stocks[$minPriceStockIndex];
+                    $sellingStock = $stock;
+                }
+
             }
 
         }
