@@ -13,7 +13,7 @@ $uri = explode( '/', $uri );
 
 // all of our endpoints start with /api
 // everything else results in a 404 Not Found
-if ($uri[1] !== 'api') {
+if ($uri[1] !== 'getMaxProfitOfStock') {
     header("HTTP/1.1 404 Not Found");
     exit();
 }
