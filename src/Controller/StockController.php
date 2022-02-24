@@ -35,14 +35,18 @@ class StockController {
     private function maxProfitOfStock() {
         try {
             $input = (array) json_decode(file_get_contents('php://input'), TRUE);
-            $result = $this->stock->maxProfitOfStock($input);
-            $response['status_code_header'] = 'HTTP/1.1 200 OK';
-            $response['body'] = json_encode($result);
-            return $response;
+            $data = $this->stock->maxProfitOfStock($input);
+            return $this->successfulResponse($data);
         }catch (\Exception $e){
             exit($e->getMessage());
         }
 
+    }
+
+    private function successfulResponse($data) {
+        $response['status_code_header'] = 'HTTP/1.1 200 OK';
+        $response['body'] = json_encode($data);
+        return $response;
     }
 
 
