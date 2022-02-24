@@ -38,7 +38,7 @@ class StockController {
             $data = $this->stock->maxProfitOfStock($input);
             return $this->successfulResponse($data);
         }catch (\Exception $e){
-            exit($e->getMessage());
+            return $this->errorResponse($e);
         }
 
     }
@@ -46,6 +46,12 @@ class StockController {
     private function successfulResponse($data) {
         $response['status_code_header'] = 'HTTP/1.1 200 OK';
         $response['body'] = json_encode($data);
+        return $response;
+    }
+
+    private function errorResponse($error) {
+        $response['status_code_header'] = 'HTTP/1.1 200 OK';
+        $response['body'] = json_encode($error->getMessage());
         return $response;
     }
 

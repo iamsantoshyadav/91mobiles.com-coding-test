@@ -62,7 +62,7 @@ class Stock {
             $data->selling_price= $sellingStock['price'] * $this->nosOfStocks;
             $data->max_profit   = $maxProfit * $this->nosOfStocks;
         }else {
-            $data->message = "Did not found any stock which has maximum profit or minimum loss";
+            $data->error = "Did not found any stock which has maximum profit or minimum loss";
         }
 
         return $data;
