@@ -3,7 +3,7 @@ namespace Src\Model\Stocks;
 
 class Stock {
     private $db = null;
-    const NO_OF_BUYING_SELLING_STOCKS = 200;
+    private $nosOfStocks = 200;
 
     public function __construct($db){
         $this->db = $db;
@@ -56,10 +56,11 @@ class Stock {
         if($buyingStock && $sellingStock){
             $data->stock_name   = $inputs['stock_name'];
             $data->buying_date  = $buyingStock['date'];
-            $data->buying_price = $buyingStock['price'];
+            $data->nos_of_stocks  = $this->nosOfStocks;
+            $data->buying_price = $buyingStock['price'] * $this->nosOfStocks;
             $data->selling_date = $sellingStock['date'];
-            $data->selling_price= $sellingStock['price'];
-            $data->max_profit   = $maxProfit;
+            $data->selling_price= $sellingStock['price'] * $this->nosOfStocks;
+            $data->max_profit   = $maxProfit * $this->nosOfStocks;
         }else {
             $data->message = "Did not found any stock which has maximum profit or minimum loss";
         }
