@@ -13,9 +13,12 @@ Followings are steps to make it working
     ii. Once Enviournment is ready now create database and update your configuration in .env.local file 
     
     iii. Seed your database by following command
+    
+    `cd seeder`
+    
     `php seeder/StocksSeeder.php`
     
-3. Serve this project locally by following command
+3. Serve this project locally by following command (From project root directory)
     `php -S 127.0.0.1:8000 -t public`
     
 4. Now its time to test this assignment
@@ -44,3 +47,5 @@ Followings are steps to make it working
       "max_profit": 400
     }
     ```
+    
+    ![Screenshot 2022-02-25 at 1 39 18 PM](https://user-images.githubusercontent.com/34602540/155678818-baa73a0a-37c9-4c7e-b2f4-c53f30819420.png)
